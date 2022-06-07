@@ -1,10 +1,16 @@
-export const addToCardMutation = ({
-  productVariant,
-  totalAmount,
-  currencyCode,
-}) => {
+export const addToCardMutation = () => {
   return `mutation {
-    cartCreate {
+    cartCreate(
+      input: {
+        lines: [
+          {
+            quantity: 1
+            merchandiseId: "gid://shopify/ProductVariant/42840407834867"
+          }
+        ]
+        attributes: { key: "cart_attribute", value: "This is a cart attribute" }
+      }
+    ) {
       cart {
         id
         createdAt
@@ -27,7 +33,7 @@ export const addToCardMutation = ({
         }
         estimatedCost {
           totalAmount {
-            amount 
+            amount
             currencyCode
           }
           subtotalAmount {

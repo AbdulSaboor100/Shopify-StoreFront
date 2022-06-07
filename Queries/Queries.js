@@ -118,3 +118,15 @@ export const getCartsById = (id) => {
     }
   }`;
 };
+
+export const getProductVariantQuery = () => {
+  return `query{
+    product(id:"gid://shopify/Product/7694885322995"){
+      variants(first:5){
+        nodes{
+          id
+        }
+      }
+    }
+    }`;
+};
